@@ -1,0 +1,31 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const postController_1 = __importDefault(require("../../../adapters/controllers/postController"));
+const postHelperRepository_1 = require("../../database/mongoDB/repositories/postHelperRepository");
+const postDbRepository_1 = require("../../../application/repositories/postDbRepository");
+const cloudinaryConfig_1 = require("../middlewares/cloudinaryConfig");
+const postRouter = () => {
+    const router = express_1.default.Router();
+    const controllers = (0, postController_1.default)(postDbRepository_1.postDbRepository, postHelperRepository_1.postRepositoryMongoDB);
+    router.get('/getpost', controllers.getPost);
+    router.post('/upload', cloudinaryConfig_1.uploadPost, controllers.uploadPost);
+    router.post('/like', controllers.likePost);
+    router.post('/unlike', controllers.unlikePost);
+    router.post('/deletepost', controllers.deletePost);
+    router.post('/report', controllers.postReport);
+    router.post('/updatePost', controllers.postUpdate);
+    router.post('/addComment', controllers.addComment);
+    router.get('/getComment/:id', controllers.getComments);
+    router.post('/cmtLike', controllers.commentLike);
+    router.post('/cmtUnlike', controllers.cmtUnlike);
+    router.post('/savepost', controllers.savepost);
+    router.post('/unsavepost', controllers.postUnsave);
+    router.post('/deletecmt', controllers.cmtDelete);
+    router.post('/replycmt', controllers.replyComment);
+    return router;
+};
+exports.default = postRouter;

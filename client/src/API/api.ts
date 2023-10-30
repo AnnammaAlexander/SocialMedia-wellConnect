@@ -1,6 +1,8 @@
 import axios from "axios";
+// const URL = "http://localhost:5000/api/"
+const URL = "https://wellconnect.online/api/"
 const baseURL=axios.create({
-    baseURL : "http://localhost:5000/api/"
+    baseURL : URL
 })
 
 baseURL.interceptors.request.use(

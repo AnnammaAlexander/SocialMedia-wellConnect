@@ -18,9 +18,9 @@ const initialState:UserState = {
     items:{
         firstName:'',
         lastName:'',
-        userName:null,
-        email:null,
-        phoneNumber:null,
+        userName:'',
+        email:'',
+        phoneNumber:0,
         dp:'',
         coverImag:'',
         bio:null,
@@ -32,7 +32,7 @@ const initialState:UserState = {
         following:null,
         requests:null,
         requested:null,
-        savedItems:null ,
+        savedItems:[] ,
         token:null,
 
     }
@@ -80,9 +80,9 @@ const userSlice=createSlice({
             state.items ={
                 firstName:'',
                 lastName:'',
-                userName:null,
+                userName:'',
                 email:'',
-                phoneNumber:null,
+                phoneNumber:0,
                 dp:'',
                 coverImag:'',
                 bio:null,
@@ -94,7 +94,7 @@ const userSlice=createSlice({
                 following:null,
                 requests:null,
                 requested:null,
-                savedItems:null,
+                savedItems:[],
                 token :null
             }
         }

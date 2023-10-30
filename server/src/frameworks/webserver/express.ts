@@ -6,7 +6,9 @@ import bodyParser from "body-parser";
 
 const expressConfig=(app:Application) =>{
     const corsEnable = {
-        origin:"*",
+        // origin:"*",
+         origin:["https://wellConnect.online/"],
+
         exposeHeader : ['Cross-Origin-Opener-Policy','Cross-Origin-Resourse-Policy']
     };
     //express middleware configuration
